@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String    @id @default(cuid()) @map("id")
+  email        String    @unique @map("email")
+  passwordHash String?   @map("password_hash")
+  name         String?   @map("name")
+  avatarUrl    String?   @map("avatar_url")
+  isAdmin      Boolean   @default(false) @map("is_admin")
+  dailyQuota   Int       @default(10) @map("daily_quota")
+  usedToday    Int       @default(0) @map("used_today")
+  resetDate    DateTime  @default(now()) @map("reset_date")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  usageLogs   UsageLog[]
+
+  @@map("users")
+}
+
+model UsageLog {
+  id        String   @id @default(cuid()) @map("id")
+  userId    String   @map("user_id")
+  prompt    String?  @map("prompt")
+  emailGoal String?  @map("email_goal")
+  recipient String?  @map("recipient")
+  modelUsed String   @default("gpt-4o") @map("model_used")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("usage_logs")
+}
+
+model Setting {
+  id        String   @id @default(cuid()) @map("id")
+  key       String   @unique @map("key")
+  value     String   @map("value")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@map("settings")
+}
