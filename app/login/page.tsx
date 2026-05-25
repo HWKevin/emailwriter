@@ -58,33 +58,33 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-16">
-      <div className="glass-card w-full max-w-md p-8">
+      <div className="card w-full max-w-md p-8">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-white">Welcome Back</h1>
-          <p className="mt-1 text-sm text-slate-400">Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
+          <p className="mt-1 text-sm text-slate-500">Sign in to your account</p>
         </div>
 
         {registered && (
-          <div className="mb-4 rounded-lg border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-300">
+          <div className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-600">
             Registration successful! Please sign in with your email and password.
           </div>
         )}
 
         {error && (
-          <div className="mb-4 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
 
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-200">
+            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-700">
               Email
             </label>
             <input
               id="email"
               type="email"
-              className="input-field"
+              className="input"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -93,14 +93,14 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-slate-200">
+            <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-slate-700">
               Password
             </label>
             <div className="relative">
               <input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
-                className="input-field pr-10"
+                className="input pr-10"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -108,7 +108,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-900"
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
@@ -121,9 +121,9 @@ export default function LoginPage() {
         </form>
 
         <div className="my-6 flex items-center gap-3">
-          <div className="h-px flex-1 bg-white/10" />
-          <span className="text-xs text-slate-500">or continue with</span>
-          <div className="h-px flex-1 bg-white/10" />
+          <div className="h-px flex-1 bg-slate-200" />
+          <span className="text-xs text-slate-400">or continue with</span>
+          <div className="h-px flex-1 bg-slate-200" />
         </div>
 
         <div className="flex gap-3">
@@ -131,7 +131,7 @@ export default function LoginPage() {
             type="button"
             onClick={() => onOAuthSignIn('google')}
             disabled={oauthLoading !== null}
-            className="btn-secondary flex-1 inline-flex items-center justify-center gap-2"
+            className="btn-ghost flex-1 inline-flex items-center justify-center gap-2"
           >
             {oauthLoading === 'google' ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -144,7 +144,7 @@ export default function LoginPage() {
             type="button"
             onClick={() => onOAuthSignIn('github')}
             disabled={oauthLoading !== null}
-            className="btn-secondary flex-1 inline-flex items-center justify-center gap-2"
+            className="btn-ghost flex-1 inline-flex items-center justify-center gap-2"
           >
             {oauthLoading === 'github' ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -155,9 +155,9 @@ export default function LoginPage() {
           </button>
         </div>
 
-        <p className="mt-6 text-center text-sm text-slate-400">
+        <p className="mt-6 text-center text-sm text-slate-500">
           Don&apos;t have an account?{' '}
-          <Link href="/register" className="text-violet-400 hover:text-violet-300">
+          <Link href="/register" className="text-indigo-500 hover:text-indigo-500">
             Sign Up
           </Link>
         </p>

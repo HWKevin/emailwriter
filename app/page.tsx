@@ -116,10 +116,10 @@ export default function Home() {
       <main>
         <section className="mx-auto max-w-6xl px-4 pb-12 pt-16 text-center md:pb-16 md:pt-24">
           <span className="badge">ZenryPro productivity tool</span>
-          <h1 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            AI Email <span style={{ color: 'var(--accent)' }}>Writer</span>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
+            AI Email <span className="text-indigo-500">Writer</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400 sm:text-xl">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500 sm:text-xl">
             Write professional emails, replies, follow-ups, and outreach messages in seconds with tone, length, and language control.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
@@ -128,7 +128,7 @@ export default function Home() {
               {session ? <ArrowRight className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
             </Link>
             {!session && (
-              <Link href="/login" className="btn-secondary inline-flex items-center gap-2">
+              <Link href="/login" className="btn-ghost inline-flex items-center gap-2">
                 Sign In
               </Link>
             )}
@@ -140,12 +140,12 @@ export default function Home() {
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
-                <div key={feature.title} className="glass-card p-5">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/15">
-                    <Icon className="h-5 w-5" style={{ color: 'var(--accent)' }} />
+                <div key={feature.title} className="card p-5">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50">
+                    <Icon className="h-5 w-5 text-indigo-500" />
                   </div>
-                  <h3 className="text-base font-semibold text-white">{feature.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{feature.description}</p>
+                  <h3 className="text-base font-semibold text-slate-900">{feature.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-slate-500">{feature.description}</p>
                 </div>
               );
             })}
@@ -155,15 +155,15 @@ export default function Home() {
         <section className="mx-auto max-w-6xl px-4 py-12">
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center">
             <div>
-              <h2 className="text-2xl font-bold text-white sm:text-3xl">Built for Real Inbox Work</h2>
-              <p className="mt-3 text-slate-400">
+              <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Built for Real Inbox Work</h2>
+              <p className="mt-3 text-slate-500">
                 The goal is not just pretty wording. Each draft includes a clear ask, the right level of politeness, and enough context to send with small edits.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {useCases.map((item) => (
-                <div key={item} className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
-                  <CheckCircle2 className="h-4 w-4 text-violet-300" />
+                <div key={item} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+                  <CheckCircle2 className="h-4 w-4 text-indigo-500" />
                   {item}
                 </div>
               ))}
@@ -181,11 +181,11 @@ export default function Home() {
               const Icon = item.icon;
               return (
                 <div key={item.title} className="text-center">
-                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full border border-violet-400/30 bg-violet-500/20 text-white">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full border border-indigo-200 bg-indigo-100 text-slate-900">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                  <p className="mt-1 text-sm text-slate-400">{item.description}</p>
+                  <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                  <p className="mt-1 text-sm text-slate-500">{item.description}</p>
                 </div>
               );
             })}
@@ -194,17 +194,17 @@ export default function Home() {
 
         <section className="mx-auto max-w-3xl px-4 py-16">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-bold text-white sm:text-3xl">Frequently Asked Questions</h2>
-            <p className="mt-2 text-slate-400">A practical email tool for the ZenryPro matrix.</p>
+            <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Frequently Asked Questions</h2>
+            <p className="mt-2 text-slate-500">A practical email tool for the ZenryPro matrix.</p>
           </div>
           <div className="space-y-3">
             {faqs.map((faq) => (
-              <details key={faq.question} className="glass-card group">
-                <summary className="flex cursor-pointer list-none items-center justify-between p-5 text-base font-medium text-white transition hover:text-violet-200">
+              <details key={faq.question} className="card group">
+                <summary className="flex cursor-pointer list-none items-center justify-between p-5 text-base font-medium text-slate-900 transition hover:text-indigo-600">
                   {faq.question}
-                  <ChevronDown className="h-5 w-5 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+                  <ChevronDown className="h-5 w-5 text-slate-500 transition-transform duration-200 group-open:rotate-180" />
                 </summary>
-                <div className="px-5 pb-5 text-sm leading-relaxed text-slate-400">
+                <div className="px-5 pb-5 text-sm leading-relaxed text-slate-500">
                   {faq.answer}
                 </div>
               </details>
@@ -213,10 +213,10 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 pb-16">
-          <div className="glass-card mx-auto max-w-3xl p-8 text-center md:p-12">
-            <Sparkles className="mx-auto mb-4 h-10 w-10" style={{ color: 'var(--accent)' }} />
-            <h2 className="text-2xl font-bold text-white sm:text-3xl">Write the Next Email Faster</h2>
-            <p className="mx-auto mt-3 max-w-lg text-slate-400">
+          <div className="card mx-auto max-w-3xl p-8 text-center md:p-12">
+            <Sparkles className="mx-auto mb-4 h-10 w-10 text-indigo-500" />
+            <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Write the Next Email Faster</h2>
+            <p className="mx-auto mt-3 max-w-lg text-slate-500">
               Turn rough notes into a polished subject line and email body without wrestling with a blank compose box.
             </p>
             <Link href={ctaHref} className="btn-primary mt-6 inline-flex items-center gap-2">

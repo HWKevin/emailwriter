@@ -111,7 +111,7 @@ export default function GeneratePage() {
 
   if (status === 'loading') {
     return (
-      <div className="flex min-h-screen items-center justify-center text-slate-400">
+      <div className="flex min-h-screen items-center justify-center text-slate-500">
         Loading...
       </div>
     );
@@ -148,17 +148,17 @@ export default function GeneratePage() {
         {/* Quota Badge */}
         {!isUnlimited && (
           <div className="mx-auto max-w-6xl px-4 pt-4">
-            <div className="inline-flex items-center gap-3 rounded-lg bg-white/5 px-4 py-2">
-              <span className="text-xs text-slate-500">Daily Quota</span>
+            <div className="inline-flex items-center gap-3 rounded-lg bg-slate-50 px-4 py-2">
+              <span className="text-xs text-slate-400">Daily Quota</span>
               <span
                 className={`text-lg font-bold ${
-                  quota.used >= quota.limit ? 'text-red-400' : 'text-violet-300'
+                  quota.used >= quota.limit ? 'text-red-500' : 'text-indigo-500'
                 }`}
               >
                 {quota.used}/{quota.limit}
               </span>
               {quota.used >= quota.limit && (
-                <span className="text-xs text-red-400">Limit reached — try again tomorrow</span>
+                <span className="text-xs text-red-500">Limit reached — try again tomorrow</span>
               )}
             </div>
           </div>
@@ -167,10 +167,10 @@ export default function GeneratePage() {
         {/* Generator */}
         <section className="mx-auto max-w-6xl px-4 py-8">
           <div className="mb-8 text-center">
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">
+            <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
               Generate Your Email
             </h1>
-            <p className="mt-2 text-slate-400">
+            <p className="mt-2 text-slate-500">
               Add the goal, recipient, and key points. AI will draft a subject line and ready-to-send body.
             </p>
           </div>
@@ -189,7 +189,7 @@ export default function GeneratePage() {
           </div>
 
           {error && (
-            <div className="mt-4 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
               {error}
             </div>
           )}

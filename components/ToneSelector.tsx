@@ -33,7 +33,7 @@ interface ToneSelectorProps {
 export default function ToneSelector({ value, onChange }: ToneSelectorProps) {
   return (
     <div className="space-y-3">
-      <label className="text-sm font-medium text-slate-200">Tone</label>
+      <label className="text-sm font-medium text-slate-700">Tone</label>
       <div className="grid gap-2 sm:grid-cols-2">
         {TONES.map((tone) => {
           const isActive = value === tone.value;
@@ -44,11 +44,11 @@ export default function ToneSelector({ value, onChange }: ToneSelectorProps) {
               onClick={() => onChange(tone.value)}
               className={`flex-1 rounded-xl border px-4 py-3 text-left transition ${
                 isActive
-                  ? 'border-violet-400 bg-violet-500/20 shadow-lg shadow-violet-500/10'
-                  : 'border-white/10 bg-white/5 hover:bg-white/10'
+                  ? 'border-indigo-400 bg-indigo-50 shadow-sm'
+                  : 'border-slate-200 bg-white hover:bg-slate-100'
               }`}
             >
-              <p className={`text-sm font-semibold ${isActive ? 'text-violet-200' : 'text-slate-200'}`}>
+              <p className={`text-sm font-semibold ${isActive ? 'text-indigo-700' : 'text-slate-600'}`}>
                 {tone.label}
               </p>
               <p className="mt-0.5 text-xs text-slate-400">{tone.description}</p>

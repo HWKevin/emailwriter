@@ -3,9 +3,15 @@ import Script from 'next/script';
 import { Inter } from 'next/font/google';
 import AuthSessionProvider from '@/components/AuthSessionProvider';
 import GoogleOneTap from '@/components/GoogleOneTap';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f8fafc",
+};
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://emailwriter.zenrypro.com';
 

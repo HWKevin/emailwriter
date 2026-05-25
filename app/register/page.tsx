@@ -68,27 +68,27 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-16">
-      <div className="glass-card w-full max-w-md p-8">
+      <div className="card w-full max-w-md p-8">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-white">Create Account</h1>
-          <p className="mt-1 text-sm text-slate-400">Sign up to start generating emails</p>
+          <h1 className="text-2xl font-bold text-slate-900">Create Account</h1>
+          <p className="mt-1 text-sm text-slate-500">Sign up to start generating emails</p>
         </div>
 
         {error && (
-          <div className="mb-4 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
 
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
-            <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-slate-200">
-              Name <span className="text-slate-500">(optional)</span>
+            <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-slate-700">
+              Name <span className="text-slate-400">(optional)</span>
             </label>
             <input
               id="name"
               type="text"
-              className="input-field"
+              className="input"
               placeholder="Your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -96,13 +96,13 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-200">
+            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-700">
               Email
             </label>
             <input
               id="email"
               type="email"
-              className="input-field"
+              className="input"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -111,14 +111,14 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-slate-200">
+            <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-slate-700">
               Password
             </label>
             <div className="relative">
               <input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
-                className="input-field pr-10"
+                className="input pr-10"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -126,7 +126,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-900"
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
@@ -134,13 +134,13 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="mb-1.5 block text-sm font-medium text-slate-200">
+            <label htmlFor="confirmPassword" className="mb-1.5 block text-sm font-medium text-slate-700">
               Confirm Password
             </label>
             <input
               id="confirmPassword"
               type="password"
-              className="input-field"
+              className="input"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
@@ -165,9 +165,9 @@ export default function RegisterPage() {
         </form>
 
         <div className="my-6 flex items-center gap-3">
-          <div className="h-px flex-1 bg-white/10" />
-          <span className="text-xs text-slate-500">or continue with</span>
-          <div className="h-px flex-1 bg-white/10" />
+          <div className="h-px flex-1 bg-slate-200" />
+          <span className="text-xs text-slate-400">or continue with</span>
+          <div className="h-px flex-1 bg-slate-200" />
         </div>
 
         <div className="flex gap-3">
@@ -175,7 +175,7 @@ export default function RegisterPage() {
             type="button"
             onClick={() => onOAuthSignUp('google')}
             disabled={oauthLoading !== null}
-            className="btn-secondary flex-1 inline-flex items-center justify-center gap-2"
+            className="btn-ghost flex-1 inline-flex items-center justify-center gap-2"
           >
             {oauthLoading === 'google' ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -188,7 +188,7 @@ export default function RegisterPage() {
             type="button"
             onClick={() => onOAuthSignUp('github')}
             disabled={oauthLoading !== null}
-            className="btn-secondary flex-1 inline-flex items-center justify-center gap-2"
+            className="btn-ghost flex-1 inline-flex items-center justify-center gap-2"
           >
             {oauthLoading === 'github' ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -199,9 +199,9 @@ export default function RegisterPage() {
           </button>
         </div>
 
-        <p className="mt-6 text-center text-sm text-slate-400">
+        <p className="mt-6 text-center text-sm text-slate-500">
           Already have an account?{' '}
-          <Link href="/login" className="text-violet-400 hover:text-violet-300">
+          <Link href="/login" className="text-indigo-500 hover:text-indigo-500">
             Sign In
           </Link>
         </p>

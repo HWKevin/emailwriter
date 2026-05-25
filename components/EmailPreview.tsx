@@ -31,12 +31,12 @@ export default function EmailPreview({ email, onRegenerate }: EmailPreviewProps)
 
   if (!email) {
     return (
-      <div className="glass-card flex flex-col items-center justify-center p-12 text-center">
-        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-violet-500/10">
-          <Mail className="h-8 w-8 text-violet-400" />
+      <div className="card flex flex-col items-center justify-center p-12 text-center">
+        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-50">
+          <Mail className="h-8 w-8 text-indigo-500" />
         </div>
-        <h3 className="mb-2 text-lg font-semibold text-white">Your Email Will Appear Here</h3>
-        <p className="max-w-sm text-sm text-slate-400">
+        <h3 className="mb-2 text-lg font-semibold text-slate-900">Your Email Will Appear Here</h3>
+        <p className="max-w-sm text-sm text-slate-500">
           Add the recipient, goal, and key points to create a polished email with a subject line.
         </p>
       </div>
@@ -44,14 +44,14 @@ export default function EmailPreview({ email, onRegenerate }: EmailPreviewProps)
   }
 
   return (
-    <div className="glass-card p-6">
+    <div className="card p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-white">Generated Email</h2>
+        <h2 className="text-lg font-semibold text-slate-900">Generated Email</h2>
         <div className="flex gap-2">
           <button
             type="button"
             onClick={onRegenerate}
-            className="btn-secondary inline-flex items-center gap-1.5"
+            className="btn-ghost inline-flex items-center gap-1.5"
             title="Regenerate"
           >
             <RefreshCw className="h-4 w-4" />
@@ -62,8 +62,8 @@ export default function EmailPreview({ email, onRegenerate }: EmailPreviewProps)
             onClick={handleCopy}
             className={`inline-flex items-center gap-1.5 rounded-xl border px-4 py-2 text-sm font-semibold transition ${
               copied
-                ? 'border-green-400/30 bg-green-500/20 text-green-300'
-                : 'btn-secondary'
+                ? 'border-emerald-200 bg-emerald-50 text-emerald-600'
+                : 'btn-ghost'
             }`}
           >
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}

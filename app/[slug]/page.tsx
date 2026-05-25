@@ -74,10 +74,10 @@ export default function SeoLandingPage({
         <section className="mx-auto max-w-6xl px-4 pb-12 pt-16 md:pb-16 md:pt-24">
           <div className="mx-auto max-w-3xl text-center">
             <span className="badge">{page.eyebrow}</span>
-            <h1 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
               {page.h1}
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-400">
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-500">
               {page.intro}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -85,7 +85,7 @@ export default function SeoLandingPage({
                 {page.ctaLabel}
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/" className="btn-secondary">
+              <Link href="/" className="btn-ghost">
                 Email Writer Home
               </Link>
             </div>
@@ -95,8 +95,8 @@ export default function SeoLandingPage({
         <section className="mx-auto max-w-6xl px-4 py-10">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[page.primaryKeyword, ...page.relatedKeywords].map((keyword) => (
-              <div key={keyword} className="glass-card p-4">
-                <p className="text-sm font-medium text-violet-100">{keyword}</p>
+              <div key={keyword} className="card p-4">
+                <p className="text-sm font-medium text-indigo-600">{keyword}</p>
               </div>
             ))}
           </div>
@@ -105,9 +105,9 @@ export default function SeoLandingPage({
         <section className="mx-auto max-w-6xl px-4 py-12">
           <div className="grid gap-6 md:grid-cols-3">
             {page.sections.map((section) => (
-              <article key={section.title} className="glass-card p-6">
-                <h2 className="text-xl font-semibold text-white">{section.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+              <article key={section.title} className="card p-6">
+                <h2 className="text-xl font-semibold text-slate-900">{section.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-slate-500">
                   {section.body}
                 </p>
               </article>
@@ -116,14 +116,14 @@ export default function SeoLandingPage({
         </section>
 
         <section className="mx-auto max-w-3xl px-4 py-16">
-          <h2 className="text-2xl font-bold text-white">Frequently Asked Questions</h2>
+          <h2 className="text-2xl font-bold text-slate-900">Frequently Asked Questions</h2>
           <div className="mt-6 space-y-3">
             {page.faq.map((item) => (
-              <details key={item.question} className="glass-card p-5">
-                <summary className="cursor-pointer text-base font-medium text-white">
+              <details key={item.question} className="card p-5">
+                <summary className="cursor-pointer text-base font-medium text-slate-900">
                   {item.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                <p className="mt-3 text-sm leading-relaxed text-slate-500">
                   {item.answer}
                 </p>
               </details>

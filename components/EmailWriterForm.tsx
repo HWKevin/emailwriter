@@ -34,17 +34,17 @@ const EMAIL_TYPES = [
 
 export default function EmailWriterForm({ formData, onChange, onSubmit, isGenerating }: EmailWriterFormProps) {
   return (
-    <div className="glass-card p-6 space-y-5">
-      <h2 className="text-lg font-semibold text-white">Email Details</h2>
+    <div className="card p-6 space-y-5">
+      <h2 className="text-lg font-semibold text-slate-900">Email Details</h2>
 
       <div>
-        <label htmlFor="emailType" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-200">
-          <Mail className="h-4 w-4 text-violet-400" />
+        <label htmlFor="emailType" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+          <Mail className="h-4 w-4 text-indigo-500" />
           Email Type
         </label>
         <select
           id="emailType"
-          className="input-field"
+          className="input"
           value={formData.emailType}
           onChange={(e) => onChange('emailType', e.target.value)}
         >
@@ -57,15 +57,15 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
       </div>
 
       <div>
-        <label htmlFor="recipient" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-200">
-          <User className="h-4 w-4 text-violet-400" />
-          Recipient <span className="text-red-400">*</span>
+        <label htmlFor="recipient" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+          <User className="h-4 w-4 text-indigo-500" />
+          Recipient <span className="text-red-500">*</span>
         </label>
         <input
           id="recipient"
           type="text"
           placeholder="e.g. my manager, a professor, a potential client"
-          className="input-field"
+          className="input"
           value={formData.recipient}
           onChange={(e) => onChange('recipient', e.target.value)}
           required
@@ -73,15 +73,15 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
       </div>
 
       <div>
-        <label htmlFor="goal" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-200">
-          <Target className="h-4 w-4 text-violet-400" />
-          Goal <span className="text-red-400">*</span>
+        <label htmlFor="goal" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+          <Target className="h-4 w-4 text-indigo-500" />
+          Goal <span className="text-red-500">*</span>
         </label>
         <input
           id="goal"
           type="text"
           placeholder="e.g. ask for a meeting, follow up after an interview, decline politely"
-          className="input-field"
+          className="input"
           value={formData.goal}
           onChange={(e) => onChange('goal', e.target.value)}
           required
@@ -89,30 +89,30 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
       </div>
 
       <div>
-        <label htmlFor="keyPoints" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-200">
-          <MessageSquare className="h-4 w-4 text-violet-400" />
+        <label htmlFor="keyPoints" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+          <MessageSquare className="h-4 w-4 text-indigo-500" />
           Key Points
         </label>
         <textarea
           id="keyPoints"
           rows={4}
           placeholder="Add the details the email should include. Bullet points are fine."
-          className="input-field resize-none"
+          className="input resize-none"
           value={formData.keyPoints}
           onChange={(e) => onChange('keyPoints', e.target.value)}
         />
       </div>
 
       <div>
-        <label htmlFor="context" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-200">
-          <MessageSquare className="h-4 w-4 text-violet-400" />
+        <label htmlFor="context" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+          <MessageSquare className="h-4 w-4 text-indigo-500" />
           Extra Context
         </label>
         <textarea
           id="context"
           rows={3}
           placeholder="Paste the email you are replying to, notes about the relationship, or constraints."
-          className="input-field resize-none"
+          className="input resize-none"
           value={formData.context}
           onChange={(e) => onChange('context', e.target.value)}
         />
@@ -122,13 +122,13 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="length" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-200">
-            <Ruler className="h-4 w-4 text-violet-400" />
+          <label htmlFor="length" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+            <Ruler className="h-4 w-4 text-indigo-500" />
             Length
           </label>
           <select
             id="length"
-            className="input-field"
+            className="input"
             value={formData.length}
             onChange={(e) => onChange('length', e.target.value)}
           >
@@ -138,13 +138,13 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
           </select>
         </div>
         <div>
-          <label htmlFor="language" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-200">
-            <Languages className="h-4 w-4 text-violet-400" />
+          <label htmlFor="language" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+            <Languages className="h-4 w-4 text-indigo-500" />
             Language
           </label>
           <select
             id="language"
-            className="input-field"
+            className="input"
             value={formData.language}
             onChange={(e) => onChange('language', e.target.value)}
           >
