@@ -3,6 +3,8 @@ import getAIProvider, { SYSTEM_PROMPT } from '@/lib/ai';
 import { getSessionUser } from '@/lib/auth/getSessionUser';
 import { checkUserQuota, recordUsage } from '@/lib/db/adminService';
 
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest) {
   // Auth check
   const sessionUser = await getSessionUser();

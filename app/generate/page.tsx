@@ -57,26 +57,53 @@ export default function GeneratePage() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const requestEmail = async () => {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : {};
+
+    if (!res.ok) {
+      throw new Error(data.error || 'Failed to generate email');
+    }
+
+    return data;
+  };
+
   const handleGenerate = async () => {
     setError('');
     setIsGenerating(true);
     try {
-      const res = await fetch('/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || 'Failed to generate email');
+      let data;
+      let lastError: unknown;
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        try {
+          data = await requestEmail();
+          break;
+        } catch (error) {
+          lastError = error;
+          if (attempt < 2) {
+            await new Promise((resolve) => setTimeout(resolve, 900 * (attempt + 1)));
+          }
+        }
+      }
+
+      if (!data) {
+        const message = lastError instanceof Error ? lastError.message : 'Network error. Please try again.';
+        setError(message.includes('Unexpected token') ? 'The server returned an invalid response. Please try again.' : message);
         return;
       }
+
       setEmail(data.email);
       if (data.quota) {
         setQuota(data.quota);
       }
-    } catch {
-      setError('Network error. Please try again.');
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Network error. Please try again.';
+      setError(message);
     } finally {
       setIsGenerating(false);
     }
