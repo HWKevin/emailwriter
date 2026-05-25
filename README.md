@@ -14,9 +14,14 @@ ZenryPro productivity tool for generating professional emails, replies, follow-u
 
 1. Copy `.env.local.example` to `.env.local`
 2. Fill in database, auth, and AI provider environment variables
-3. Install dependencies with `npm install`
-4. Push the schema with `npx prisma db push`
-5. Start the app with `npm run dev`
+3. Create the `emailwriter` PostgreSQL schema with `prisma/init-emailwriter-schema.sql`
+4. Install dependencies with `npm install`
+5. Push the schema with `npx prisma db push`
+6. Start the app with `npm run dev`
+
+## Database Isolation
+
+This project uses the `emailwriter` PostgreSQL schema so it can share one Supabase database with other ZenryPro tools without table-name conflicts. See `docs/database-strategy.md` for the migration path toward shared accounts, SSO, quotas, subscriptions, and unified history.
 
 ## SEO Pages
 

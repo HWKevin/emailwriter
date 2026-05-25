@@ -1,5 +1,7 @@
 # Database Schema
 
+All tables for this project live in the PostgreSQL `emailwriter` schema. This lets multiple ZenryPro tools share one Supabase database while keeping each product's short-term tables isolated.
+
 ## User
 - `id` — unique identifier (cuid)
 - `email` — unique, used for login

@@ -1,11 +1,13 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+  schemas   = ["emailwriter"]
 }
 
 model User {
@@ -23,6 +25,7 @@ model User {
 
   usageLogs   UsageLog[]
 
+  @@schema("emailwriter")
   @@map("users")
 }
 
@@ -38,6 +41,7 @@ model UsageLog {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, createdAt(sort: Desc)])
+  @@schema("emailwriter")
   @@map("usage_logs")
 }
 
@@ -48,5 +52,6 @@ model Setting {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
 
+  @@schema("emailwriter")
   @@map("settings")
 }
