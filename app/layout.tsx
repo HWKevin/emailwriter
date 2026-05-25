@@ -78,7 +78,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-PFF91TL8GJ"
+          src="https://www.googletagmanager.com/gtag/js?id=GT-TBN7GT2S"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -86,7 +86,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-PFF91TL8GJ');
+            gtag('config', 'GT-TBN7GT2S');
           `}
         </Script>
         <AuthSessionProvider>
