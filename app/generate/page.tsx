@@ -32,6 +32,13 @@ export default function GeneratePage() {
   const [error, setError] = useState('');
   const [quota, setQuota] = useState<QuotaInfo>({ used: 0, limit: -1 });
 
+  useEffect(() => {
+    const emailType = new URLSearchParams(window.location.search).get('emailType');
+    if (emailType) {
+      setFormData((prev) => ({ ...prev, emailType }));
+    }
+  }, []);
+
   // Redirect unauthenticated users to login
   useEffect(() => {
     if (status === 'unauthenticated') {

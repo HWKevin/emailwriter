@@ -22,6 +22,7 @@ interface EmailWriterFormProps {
 }
 
 const EMAIL_TYPES = [
+  'Subject line ideas',
   'Professional email',
   'Reply to an email',
   'Follow-up email',

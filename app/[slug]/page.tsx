@@ -81,7 +81,7 @@ export default function SeoLandingPage({
               {page.intro}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/generate" className="btn-primary inline-flex items-center gap-2">
+              <Link href={page.ctaHref || '/generate'} className="btn-primary inline-flex items-center gap-2">
                 {page.ctaLabel}
                 <ArrowRight className="h-4 w-4" />
               </Link>

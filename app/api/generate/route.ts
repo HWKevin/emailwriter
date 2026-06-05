@@ -50,7 +50,11 @@ export async function POST(request: NextRequest) {
             ? 'persuasive, concise, and action-oriented'
             : 'professional and polished';
 
-    let userPrompt = `Write an email for me.\n\n`;
+    const isSubjectLineRequest = String(emailType || '').toLowerCase().includes('subject line');
+
+    let userPrompt = isSubjectLineRequest
+      ? `Generate email subject line ideas for me.\n\n`
+      : `Write an email for me.\n\n`;
     userPrompt += `- Email type: ${emailType || 'Professional email'}\n`;
     userPrompt += `- Recipient: ${recipient}\n`;
     userPrompt += `- Goal: ${goal}\n`;
@@ -62,6 +66,9 @@ export async function POST(request: NextRequest) {
     }
     if (context) {
       userPrompt += `- Additional context or original email: ${context}\n`;
+    }
+    if (isSubjectLineRequest) {
+      userPrompt += `\nReturn 12 subject line options only. Group them by style: Clear, Warm, Concise, and Persuasive. Do not write the email body.\n`;
     }
 
     const provider = getAIProvider();

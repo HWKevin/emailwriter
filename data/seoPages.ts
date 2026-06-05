@@ -8,6 +8,7 @@ export interface SeoPage {
   relatedKeywords: string[];
   intro: string;
   ctaLabel: string;
+  ctaHref?: string;
   sections: {
     title: string;
     body: string;
@@ -19,6 +20,49 @@ export interface SeoPage {
 }
 
 export const seoPages: SeoPage[] = [
+  {
+    slug: 'email-subject-line-generator',
+    title: 'Email Subject Line Generator - Write Better Subject Lines',
+    description:
+      'Generate clear email subject lines for outreach, follow-ups, newsletters, professional messages, and cold emails.',
+    h1: 'Email Subject Line Generator',
+    eyebrow: 'Subject line writing tool',
+    primaryKeyword: 'email subject line generator',
+    relatedKeywords: ['subject line generator', 'email title generator', 'cold email subject line generator', 'newsletter subject line generator'],
+    intro:
+      'Turn your email goal, audience, and key points into subject line options that are clear, specific, and easy to test.',
+    ctaLabel: 'Generate Subject Lines',
+    ctaHref: '/generate?emailType=Subject%20line%20ideas',
+    sections: [
+      {
+        title: 'Built for Opens',
+        body:
+          'A strong subject line tells the recipient why the email matters without sounding vague, spammy, or over-written.',
+      },
+      {
+        title: 'Useful Variants',
+        body:
+          'Generate concise, professional, warm, and persuasive options so you can choose the line that fits the relationship.',
+      },
+      {
+        title: 'Works Across Email Types',
+        body:
+          'Use it for cold outreach, follow-ups, sales emails, interview emails, client updates, newsletters, and internal messages.',
+      },
+    ],
+    faq: [
+      {
+        question: 'What should I include for better subject lines?',
+        answer:
+          'Add the recipient, email goal, key details, offer, deadline, or context. Specific inputs usually produce stronger subject line options.',
+      },
+      {
+        question: 'Can it generate cold email subject lines?',
+        answer:
+          'Yes. Choose the subject line option, describe the prospect and offer, and use a concise or persuasive tone.',
+      },
+    ],
+  },
   {
     slug: 'ai-email-writer',
     title: 'AI Email Writer - Write Professional Emails Fast',

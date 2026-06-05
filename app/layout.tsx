@@ -28,6 +28,8 @@ export const metadata: Metadata = {
     'free AI email writer',
     'email reply generator',
     'professional email generator',
+    'email subject line generator',
+    'subject line generator',
     'follow up email generator',
     'cold email generator',
     'Gmail email writer',
