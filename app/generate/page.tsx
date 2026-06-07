@@ -42,7 +42,8 @@ export default function GeneratePage() {
   // Redirect unauthenticated users to login
   useEffect(() => {
     if (status === 'unauthenticated') {
-      router.replace('/login?callbackUrl=/generate');
+      const callbackUrl = `${window.location.pathname}${window.location.search}`;
+      router.replace(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
       return;
     }
     if (status === 'authenticated' && session?.user && !session.user.isAdmin) {
@@ -129,6 +130,7 @@ export default function GeneratePage() {
   }
 
   const isUnlimited = quota.limit === -1;
+  const isSubjectLineMode = formData.emailType.toLowerCase().includes('subject line');
 
   return (
     <div className="min-h-screen">
@@ -175,10 +177,12 @@ export default function GeneratePage() {
         <section className="mx-auto max-w-6xl px-4 py-8">
           <div className="mb-8 text-center">
             <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-              Generate Your Email
+              {isSubjectLineMode ? 'Generate Subject Line Ideas' : 'Generate Your Email'}
             </h1>
             <p className="mt-2 text-slate-500">
-              Add the goal, recipient, and key points. AI will draft a subject line and ready-to-send body.
+              {isSubjectLineMode
+                ? 'Add the audience, goal, and key points. AI will draft subject line options only.'
+                : 'Add the goal, recipient, and key points. AI will draft a subject line and ready-to-send body.'}
             </p>
           </div>
 
@@ -188,10 +192,12 @@ export default function GeneratePage() {
               onChange={handleChange}
               onSubmit={handleGenerate}
               isGenerating={isGenerating}
+              isSubjectLineMode={isSubjectLineMode}
             />
             <EmailPreview
               email={email}
               onRegenerate={handleGenerate}
+              isSubjectLineMode={isSubjectLineMode}
             />
           </div>
 

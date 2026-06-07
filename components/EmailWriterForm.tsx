@@ -19,6 +19,7 @@ interface EmailWriterFormProps {
   onChange: (field: keyof EmailFormData, value: string) => void;
   onSubmit: () => void;
   isGenerating: boolean;
+  isSubjectLineMode?: boolean;
 }
 
 const EMAIL_TYPES = [
@@ -33,10 +34,18 @@ const EMAIL_TYPES = [
   'Job application email',
 ];
 
-export default function EmailWriterForm({ formData, onChange, onSubmit, isGenerating }: EmailWriterFormProps) {
+export default function EmailWriterForm({
+  formData,
+  onChange,
+  onSubmit,
+  isGenerating,
+  isSubjectLineMode = false,
+}: EmailWriterFormProps) {
   return (
     <div className="card p-6 space-y-5">
-      <h2 className="text-lg font-semibold text-slate-900">Email Details</h2>
+      <h2 className="text-lg font-semibold text-slate-900">
+        {isSubjectLineMode ? 'Subject Line Details' : 'Email Details'}
+      </h2>
 
       <div>
         <label htmlFor="emailType" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
@@ -60,12 +69,16 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
       <div>
         <label htmlFor="recipient" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
           <User className="h-4 w-4 text-indigo-500" />
-          Recipient <span className="text-red-500">*</span>
+          {isSubjectLineMode ? 'Audience or recipient' : 'Recipient'} <span className="text-red-500">*</span>
         </label>
         <input
           id="recipient"
           type="text"
-          placeholder="e.g. my manager, a professor, a potential client"
+          placeholder={
+            isSubjectLineMode
+              ? 'e.g. newsletter readers, prospects, hiring manager'
+              : 'e.g. my manager, a professor, a potential client'
+          }
           className="input"
           value={formData.recipient}
           onChange={(e) => onChange('recipient', e.target.value)}
@@ -76,12 +89,16 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
       <div>
         <label htmlFor="goal" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
           <Target className="h-4 w-4 text-indigo-500" />
-          Goal <span className="text-red-500">*</span>
+          {isSubjectLineMode ? 'Subject line goal' : 'Goal'} <span className="text-red-500">*</span>
         </label>
         <input
           id="goal"
           type="text"
-          placeholder="e.g. ask for a meeting, follow up after an interview, decline politely"
+          placeholder={
+            isSubjectLineMode
+              ? 'e.g. increase opens for a product launch, get a reply, confirm attendance'
+              : 'e.g. ask for a meeting, follow up after an interview, decline politely'
+          }
           className="input"
           value={formData.goal}
           onChange={(e) => onChange('goal', e.target.value)}
@@ -92,12 +109,16 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
       <div>
         <label htmlFor="keyPoints" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
           <MessageSquare className="h-4 w-4 text-indigo-500" />
-          Key Points
+          {isSubjectLineMode ? 'Key details to signal' : 'Key Points'}
         </label>
         <textarea
           id="keyPoints"
           rows={4}
-          placeholder="Add the details the email should include. Bullet points are fine."
+          placeholder={
+            isSubjectLineMode
+              ? 'Add the offer, topic, deadline, value proposition, or event details.'
+              : 'Add the details the email should include. Bullet points are fine.'
+          }
           className="input resize-none"
           value={formData.keyPoints}
           onChange={(e) => onChange('keyPoints', e.target.value)}
@@ -107,12 +128,16 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
       <div>
         <label htmlFor="context" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
           <MessageSquare className="h-4 w-4 text-indigo-500" />
-          Extra Context
+          {isSubjectLineMode ? 'Extra Context for the Subject Lines' : 'Extra Context'}
         </label>
         <textarea
           id="context"
           rows={3}
-          placeholder="Paste the email you are replying to, notes about the relationship, or constraints."
+          placeholder={
+            isSubjectLineMode
+              ? 'Add brand voice, words to avoid, recipient relationship, or previous subject lines.'
+              : 'Paste the email you are replying to, notes about the relationship, or constraints.'
+          }
           className="input resize-none"
           value={formData.context}
           onChange={(e) => onChange('context', e.target.value)}
@@ -173,7 +198,7 @@ export default function EmailWriterForm({ formData, onChange, onSubmit, isGenera
         ) : (
           <span className="flex items-center justify-center gap-2">
             <Mail className="h-4 w-4" />
-            Generate Email
+            {isSubjectLineMode ? 'Generate Subject Lines' : 'Generate Email'}
           </span>
         )}
       </button>

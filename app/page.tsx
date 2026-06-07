@@ -26,14 +26,14 @@ const features = [
 ];
 
 const useCases = [
-  'Professional email',
-  'Email reply generator',
-  'Follow-up email',
-  'Cold outreach',
-  'Thank-you email',
-  'Apology email',
-  'Meeting request',
-  'Job application email',
+  { label: 'Professional email', href: '/generate' },
+  { label: 'Email subject line generator', href: '/email-subject-line-generator' },
+  { label: 'Email reply generator', href: '/ai-email-reply-generator' },
+  { label: 'Follow-up email', href: '/follow-up-email-generator' },
+  { label: 'Cold outreach', href: '/cold-email-generator' },
+  { label: 'Thank-you email', href: '/generate?emailType=Thank-you%20email' },
+  { label: 'Apology email', href: '/generate?emailType=Apology%20email' },
+  { label: 'Meeting request', href: '/generate?emailType=Meeting%20request' },
 ];
 
 const faqs = [
@@ -162,10 +162,14 @@ export default function Home() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {useCases.map((item) => (
-                <div key={item} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50"
+                >
                   <CheckCircle2 className="h-4 w-4 text-indigo-500" />
-                  {item}
-                </div>
+                  {item.label}
+                </Link>
               ))}
             </div>
           </div>

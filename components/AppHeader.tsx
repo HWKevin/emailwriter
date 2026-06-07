@@ -29,6 +29,9 @@ export default function AppHeader() {
                 <Link href="/ai-email-reply-generator" className="text-sm text-slate-600 transition hover:text-slate-900">
                   Reply Generator
                 </Link>
+                <Link href="/email-subject-line-generator" className="hidden text-sm text-slate-600 transition hover:text-slate-900 md:inline">
+                  Subject Lines
+                </Link>
                 <div className="hidden text-sm text-slate-500 sm:block">
                   {session.user.name || session.user.email}
                 </div>
@@ -47,6 +50,9 @@ export default function AppHeader() {
               <>
                 <Link href="/follow-up-email-generator" className="text-sm text-slate-600 transition hover:text-slate-900">
                   Follow-Up
+                </Link>
+                <Link href="/email-subject-line-generator" className="hidden text-sm text-slate-600 transition hover:text-slate-900 sm:inline">
+                  Subject Lines
                 </Link>
                 <Link href="/login" className="text-sm text-slate-600 transition hover:text-slate-900">
                   Sign In

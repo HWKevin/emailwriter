@@ -6,9 +6,10 @@ import { useState } from 'react';
 interface EmailPreviewProps {
   email: string;
   onRegenerate: () => void;
+  isSubjectLineMode?: boolean;
 }
 
-export default function EmailPreview({ email, onRegenerate }: EmailPreviewProps) {
+export default function EmailPreview({ email, onRegenerate, isSubjectLineMode = false }: EmailPreviewProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -35,9 +36,13 @@ export default function EmailPreview({ email, onRegenerate }: EmailPreviewProps)
         <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-50">
           <Mail className="h-8 w-8 text-indigo-500" />
         </div>
-        <h3 className="mb-2 text-lg font-semibold text-slate-900">Your Email Will Appear Here</h3>
+        <h3 className="mb-2 text-lg font-semibold text-slate-900">
+          {isSubjectLineMode ? 'Your Subject Lines Will Appear Here' : 'Your Email Will Appear Here'}
+        </h3>
         <p className="max-w-sm text-sm text-slate-500">
-          Add the recipient, goal, and key points to create a polished email with a subject line.
+          {isSubjectLineMode
+            ? 'Add the audience, goal, and key details to create subject line options.'
+            : 'Add the recipient, goal, and key points to create a polished email with a subject line.'}
         </p>
       </div>
     );
@@ -46,7 +51,9 @@ export default function EmailPreview({ email, onRegenerate }: EmailPreviewProps)
   return (
     <div className="card p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-slate-900">Generated Email</h2>
+        <h2 className="text-lg font-semibold text-slate-900">
+          {isSubjectLineMode ? 'Generated Subject Lines' : 'Generated Email'}
+        </h2>
         <div className="flex gap-2">
           <button
             type="button"

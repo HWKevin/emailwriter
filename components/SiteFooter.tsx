@@ -9,6 +9,9 @@ export default function SiteFooter() {
           <a href="/ai-email-reply-generator" className="transition hover:text-slate-600">
             Reply Generator
           </a>
+          <a href="/email-subject-line-generator" className="transition hover:text-slate-600">
+            Subject Line Generator
+          </a>
           <a href="/follow-up-email-generator" className="transition hover:text-slate-600">
             Follow-Up Email
           </a>
